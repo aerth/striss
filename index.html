@@ -1,85 +1,88 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <title>Icecast Stress Test by hazrdFM</title>
 
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
-    <title>Icecast Stress Test by hazrd</title>
   </head>
-
   <body>
-    <header>
-      <div class="inner">
-        <h1>Icecast Stress Test</h1>
-        <h2>Stress Test your Icecast server in Golang (Can you Go over 9000?)</h2>
-        <a href="https://github.com/hazrd/icecast-stress" class="button"><small>View project on</small> GitHub</a>
-      </div>
-    </header>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Icecast Stress Test</h1>
+        <p class="header">Stress Test your Icecast server in Golang (Can you Go over 9000?)</p>
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h1>
-<a id="icecast-stress" class="anchor" href="#icecast-stress" aria-hidden="true"><span class="octicon octicon-link"></span></a>icecast-stress</h1>
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/hazrdFM/icecast-stress/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/hazrdFM/icecast-stress/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/hazrdFM/icecast-stress">View On GitHub</a></li>
+        </ul>
 
-<p>Stress Test your Icecast server in Go</p>
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/hazrdFM">hazrdFM</a></p>
+
+
+      </header>
+      <section>
+        <h1>
+<a id="icecast-stress" class="anchor" href="#icecast-stress" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>icecast-stress</h1>
+
+<p>Stress Test Real Icecast server</p>
 
 <p>Slightly modified <a href="https://github.com/afriza/netTestShoutcast">netTestShoutcast</a></p>
 
 <h2>
-<a id="works-great-here-is-how-to-go-get-it" class="anchor" href="#works-great-here-is-how-to-go-get-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>Works great. Here is how to go get it.</h2>
+<a id="works-great-here-is-how-to-go-get-it" class="anchor" href="#works-great-here-is-how-to-go-get-it" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Works great. Here is how to go get it.</h2>
 
 <pre><code>go get -v -u github.com/hazrd/icecast-stress
+
 </code></pre>
 
 <h2>
-<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
 
 <pre><code>icecast-stress
 
-Usage: ./icecast-stress &lt;host.server.com:port&gt; &lt;num_conn&gt; [interval]
-Defaults to mountpoint: /stream -- If you need, go in and rebuild!
+Usage: icecast-stress &lt;host.server.com:port&gt; &lt;mountpoint&gt; &lt;num_conn&gt; [interval]
+
+Example: # icecast-stress example.com:8000 mount 5 600 # five connections, mountpoint /mount
+Example: # icecast-stress example.com:8080 stream3 40 600 # forty connections, mountpoint /stream3
+
+
 </code></pre>
 
 <pre><code>icecast-stress yourserver.com:8000 5 # start small.
 icecast-stress yourserver.com:8000 9000 # go hard!
+
 </code></pre>
 
 <h2>
-<a id="bugs" class="anchor" href="#bugs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bugs</h2>
+<a id="bugs" class="anchor" href="#bugs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bugs</h2>
 
 <ul>
-<li>Cant change mountpoint via CLI, have to rebuild with it hardcoded. Ohwell.</li>
-<li>When going over 9000 it seems to have a tough time responding to Ctrl+C</li>
+<li><p>When going high numbers like 600 it seems to have a tough time responding to Ctrl+C</p></li>
+<li><p>icecast-stress will panic if you dont do it correctly. "future: add error handling"</p></li>
+<li><p>Report any new ones you find</p></li>
 </ul>
-        </section>
 
-        <aside id="sidebar">
-          <a href="https://github.com/hazrd/icecast-stress/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/hazrd/icecast-stress/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributing</h2>
 
-          <p class="repo-owner"><a href="https://github.com/hazrd/icecast-stress"></a> is maintained by <a href="https://github.com/hazrd">hazrd</a>.</p>
-
-          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
+<ul>
+<li>Pull requests are welcome! Fork this!</li>
+</ul>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
     </div>
-
-  
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
   </body>
 </html>
