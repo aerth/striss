@@ -37,9 +37,8 @@ func create_getter(uri string,
 		}
 		defer conn.Close()
 
-
 		mountpoint := os.Args[2]
-		fmt.Fprint(conn, "GET /" + mountpoint + " HTTP/1.0\r\n\r\n")
+		fmt.Fprint(conn, "GET /"+mountpoint+" HTTP/1.0\r\n\r\n")
 		for {
 			select {
 			case <-quit:
@@ -65,7 +64,8 @@ func create_getter(uri string,
 }
 
 func printUsage() {
-	fmt.Print("\n\nicecast-stress\n\nUsage: ", os.Args[0], " <host.server.com:port> <mountpoint> <num_conn> [interval] \n")
+	fmt.Print("\n\nUsage: ", os.Args[0], " <host.server.com:port> <mountpoint> <num_conn> [interval] \n")
+	fmt.Print("\n\nCan you go over 9000?\n")
 }
 
 func init() {
