@@ -98,8 +98,8 @@ func main() {
 
 	get := create_getter(svr_address, buffer_size, quit, death)
 
-	s := make(chan os.Signal, 2)
-	signal.Notify(s)
+	sigChan := make(chan os.Signal, 2)
+	signal.Notify(sigChan, os.Kill, os.Interrupt)
 	var sig os.Signal
 
 	ticker := time.NewTicker(time.Duration(tick_interval) * time.Millisecond)
@@ -110,7 +110,7 @@ M:
 		case <-ticker.C:
 			born++
 			go get(born)
-		case sig = <-s:
+		case sig = <-sigChan:
 			break M
 		}
 	}
@@ -118,12 +118,12 @@ M:
 
 	for sig == nil && dead < born {
 		select {
-		case sig = <-s:
+		case sig = <-sigChan:
 		case <-death:
 			dead++
 		}
 	}
-	signal.Stop(s)
+	signal.Stop(sigChan)
 
 	if print_progress {
 		fmt.Println()
