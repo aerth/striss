@@ -1,13 +1,13 @@
-# icecast-stress
+# striss
 
-Stress Test Real Icecast server
+Stress Test Icecast server
 
 Slightly modified [netTestShoutcast](https://github.com/afriza/netTestShoutcast)
 
 ## Works great. Here is how to go get it.
 
 ```
-go get -v -u github.com/hazrd/icecast-stress
+go get -v -u github.com/aerth/striss
 
 ```
 
@@ -38,3 +38,5 @@ icecast-stress yourserver.com:8000 9000 # go hard!
 * icecast-stress will panic if you dont do it correctly. "future: add error handling"
 
 * Report any new ones you find
+
+fork of: github.com/hazrd/icecast-stress
